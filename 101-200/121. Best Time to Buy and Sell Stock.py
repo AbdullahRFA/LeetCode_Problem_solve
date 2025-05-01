@@ -18,6 +18,23 @@ Example 2:
 Input: prices = [7,6,4,3,1]
 Output: 0
 Explanation: In this case, no transactions are done and the max profit = 0.
+
+
+💡 Step-by-Step Thinking
+
+We want to find the lowest price to buy and the highest profit we can get afterward by selling.
+
+⸻
+
+🧠 Intuition:
+
+Loop through the list:
+	•	Keep track of the minimum price so far (best day to buy).
+	•	On each day, calculate the profit if you sold today: today's price - min_price_so_far.
+	•	Track the maximum profit we’ve seen so far.
+
+
+
 """
 
 from typing import List
