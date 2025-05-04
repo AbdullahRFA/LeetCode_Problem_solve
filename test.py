@@ -1,5 +1,5 @@
-SET = {'a','b','b'}
-print(SET)
-SET.remove('b')
-print(SET)
+from collections import Counter
+SET = "Abdullah"
+st = "Abdullah"
+print(Counter(SET)==Counter(st))
 
