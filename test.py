@@ -1,3 +1,5 @@
-nums = [1, 2, 2, 1]
+SET = {'a','b','b'}
+print(SET)
+SET.remove('b')
+print(SET)
 
-print(1^1)
