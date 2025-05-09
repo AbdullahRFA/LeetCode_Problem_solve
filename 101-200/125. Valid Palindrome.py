@@ -30,8 +30,8 @@ class Solution:
             if x.isalnum():               # keep only alphanumeric
                 tem_s.append(x.lower())   # convert to lowercase
         tem_s = "".join(tem_s)            # join list to form cleaned string
-        print(tem_s)                      # (for debugging)
-        print(tem_s[::-1])                # reversed string (for debugging)
+        # print(tem_s)                      # (for debugging)
+        # print(tem_s[::-1])                # reversed string (for debugging)
         return tem_s == tem_s[::-1]       # check palindrome
 
 
