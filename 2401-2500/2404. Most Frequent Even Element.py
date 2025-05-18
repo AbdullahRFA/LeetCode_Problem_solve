@@ -67,6 +67,7 @@ class Solution:
         most_frequent = sorted(count.items(), key=lambda x: (-x[1], x[0]))
 
         # Return the number with highest frequency (and smallest if tied)
+        print(most_frequent)
         return most_frequent[0][0]
 slv = Solution()
 nums = [0,1,2,2,4,4,1]
