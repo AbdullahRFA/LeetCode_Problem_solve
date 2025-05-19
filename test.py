@@ -1,7 +1,6 @@
-import heapq
-def k_smallest(nums, k):
-    heapq.heapify(nums)
-    print(nums)
-    return [heapq.heappop(nums) for _ in range(k)]
+nums1 = [1,2,2,1]
+nums2 = [2,2]
 
-print(k_smallest([9, 4, 7, 1, -2, 6, 5], 3))  # [-2, 1, 4]
+nums1.remove(2)
+nums1.append([5]*3)
+print(nums1)

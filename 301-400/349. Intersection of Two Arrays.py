@@ -20,8 +20,13 @@ class Solution:
         set1 = set(nums1)
         set2 = set(nums2)
         set1.intersection_update(nums2)
+        print(set1.intersection(set2))
         return list(set1)
 slv = Solution()
-nums1 = [4,9,5]
-nums2 = [9,4,9,8,4]
+# nums1 = [4,9,5]
+# nums2 = [9,4,9,8,4]
+
+nums1 = [1,2,2,1]
+
+nums2 = [2,2]
 print(slv.intersection(nums1,nums2))
