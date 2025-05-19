@@ -122,6 +122,10 @@ def findKthLargest(nums, k):
             heapq.heappop(min_heap)
 
     return min_heap[0]
+# class Solution:
+#     def findKthLargest(self, nums: List[int], k: int) -> int:
+#         nums.sort(reverse=True)
+#         return nums[k-1]
 
 
 # --------------------------
