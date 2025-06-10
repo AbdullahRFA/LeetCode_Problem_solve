@@ -1,6 +1,9 @@
-nums1 = [1,2,2,1]
-nums2 = [2,2]
-
-nums1.remove(2)
-nums1.append([5]*3)
-print(nums1)
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    if n>=7:
+        print("HEAVY")
+    elif n>=3 and n<7:
+        print("MODERATE")
+    elif n <=3:
+        print("LIGHT")
