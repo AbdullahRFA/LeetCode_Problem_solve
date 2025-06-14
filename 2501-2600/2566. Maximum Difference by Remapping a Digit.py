@@ -96,8 +96,9 @@ class Solution:
                 break
         else:
             min_value = num
+        # print(max_value,min_value)
         return max_value - min_value
 
 slv = Solution()
-num = 90
+num = 11891
 print(slv.minMaxDifference(num))
