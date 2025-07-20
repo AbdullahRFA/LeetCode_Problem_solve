@@ -26,16 +26,24 @@ Explanation: There are 4 positive integers and 0 negative integers. The maximum 
 
 """
 from typing import  List
+from bisect import bisect_left, bisect_right
 class Solution:
     def maximumCount(self, nums: List[int]) -> int:
+        # pos = 0
+        # neg = 0
+        # for x in nums:
+        #     if x < 0:
+        #         neg+=1
+        #     elif x > 0:
+        #         pos+=1
+        # return max(pos,neg)
         pos = 0
         neg = 0
-        for x in nums:
-            if x < 0:
-                neg+=1
-            elif x > 0:
-                pos+=1
-        return max(pos,neg)
+
+        neg = bisect_left(nums, 0)
+        pos = len(nums) - bisect_right(nums, 0)
+
+        return max(neg, pos)
 
 slv = Solution()
 nums = [-2, -1, -1, 1, 2, 3]
