@@ -7,6 +7,8 @@ class Solution:
         # maxi = 0
         # # ones = 0
 
+        # O(N**2)
+
         # for i in range(n):
         #     ones = 0
         #     zeros = 0
@@ -21,6 +23,28 @@ class Solution:
         #                 maxi = max(maxi, ones)
         #             else:
         #                 break
+            # return maxi
+
+
+        # O(2N)
+
+        # n = len(nums)
+        # maxi=left=right=zeros=0
+
+        # while right<n:
+        #     if nums[right] == 0:
+        #         zeros += 1
+        #     while zeros>k:
+        #         if nums[left] == 0:
+        #             zeros -= 1
+        #         left += 1
+        #     maxi = max(maxi, right-left+1)
+        #     right += 1
+        # return maxi
+
+
+
+        # O(N)
 
         n = len(nums)
         maxi=left=right=zeros=0
@@ -28,7 +52,7 @@ class Solution:
         while right<n:
             if nums[right] == 0:
                 zeros += 1
-            while zeros>k:
+            if zeros>k:
                 if nums[left] == 0:
                     zeros -= 1
                 left += 1
@@ -36,7 +60,7 @@ class Solution:
             right += 1
         return maxi
 
-        return maxi
+        
             
 
 
