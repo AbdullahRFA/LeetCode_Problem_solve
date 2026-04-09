@@ -23,6 +23,8 @@ Solution: Recursion
 5. In the main function `inorderTraversal`, we initialize an empty list `res` to store the result and call the `inOrder` function with the root node and the result list.   
 6. Finally, we return the result list containing the values of the nodes in inorder traversal order.
 
+Time Complexity: O(n), where n is the number of nodes in the binary tree, since we visit each node exactly once.
+Space Complexity: O(n) in the worst case (when the tree is completely unbalanced), and O(log n) in the best case (when the tree is completely balanced), due to the recursive call stack.
 '''
 
 
