@@ -28,7 +28,7 @@ Solution: BFS
 4. If the current word is not the endWord, we will generate all possible transformations by changing each letter of the current word to every other letter in the alphabet. For each generated word, if it is in the wordList set, we will add it to the queue with a level incremented by 1 and remove it from the wordList set to avoid processing it again.
 5. If we exhaust the queue without finding the endWord, we will return 0 to indicate that no valid transformation sequence exists.
 
-Time Complexity: O(N * M^2), where N is the number of words in the wordList and M is the length of each word. This is because for each word, we are generating M possible transformations by changing each letter, and for each transformation, we are checking if it exists in the wordList set.
+Time Complexity: O(N * M * 26), where N is the number of words in the wordList, M is the length of each word, and 26 is the number of letters in the English alphabet. In the worst case, we may need to generate all possible transformations for each word in the wordList.
 Space Complexity: O(N), where N is the number of words in the wordList, due to the queue and the set used for storing the words. In the worst case, we may need to store all the words in the queue if they are all one letter different from each other.
 '''
 
