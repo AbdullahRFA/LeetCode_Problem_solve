@@ -25,6 +25,16 @@ Solution: BFS
 Time Complexity: O(m * n), where m is the number of rows and n is the number of columns in the grid. We will visit each cell at most once during the BFS.
 Space Complexity: O(m * n) in the worst case, if the grid is filled with '1's, we will need to store all cells in the queue and the visited matrix.
 
+Solution: DFS
+1. We can also use a depth-first search (DFS) approach to solve this problem. The idea is similar to BFS, but instead of using a queue, we will use recursion to explore the connected '1's.
+2. We will initialize a counter to keep track of the number of islands and a visited matrix to keep track of which cells have been visited. We will iterate through each cell in the grid, and if we encounter a '1' that has not been visited, we will increment the island counter and perform a DFS starting from that cell.
+3. In the DFS, we will check if the current cell is out of bounds, if it contains '0', or if it has already been visited. If any of these conditions are true, we will return from the DFS. Otherwise, we will mark the current cell as visited and recursively call the DFS for its four adjacent cells (up, down, left, right).
+4. After the DFS is complete, we will have marked all the connected '1's as visited, and we can continue iterating through the grid to find the next unvisited '1' to start a new DFS for the next island. We will repeat this process until we have processed all cells in the grid.
+5. Finally, we will return the count of islands.
+
+Time Complexity: O(m * n), where m is the number of rows and n is the number of columns in the grid. We will visit each cell at most once during the DFS.
+Space Complexity: O(m * n) in the worst case, if the grid is filled with '1's, we will need to store all cells in the call stack for the DFS and the visited matrix.
+
 '''
 
 
@@ -52,6 +62,21 @@ class Solution:
                         continue
                     vis[ni][nj]=1
                     queue.append((ni,nj))
+                    
+                    
+    def dfs(self, r,c,vis,grid,rows,cols):
+
+        if r < 0 or r==rows or c < 0 or c==cols:
+            return
+        if grid[r][c] == "0" or vis[r][c]==1:
+            return
+        vis[r][c]=1
+
+        self.dfs(r-1,c,vis,grid,rows,cols)  
+        self.dfs(r+1,c,vis,grid,rows,cols)  
+        self.dfs(r,c-1,vis,grid,rows,cols)  
+        self.dfs(r,c+1,vis,grid,rows,cols) 
+        
     def numIslands(self, grid: List[List[str]]) -> int:
 
        
