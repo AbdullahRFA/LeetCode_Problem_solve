@@ -20,14 +20,18 @@ Solution: DFS with path tracking
 1. We can use a depth-first search (DFS) approach to detect cycles in a directed graph. The idea is to keep track of the nodes currently in the path of the DFS. If we encounter a node that is already in the current path, it means we have found a cycle.
 2. We will maintain two arrays: one to keep track of visited nodes and another to keep track of the nodes currently in the path. When we start a DFS from an unvisited node, we will mark it as visited and add it to the current path. We will then recursively visit all its neighbors. If we encounter a neighbor that is already in the current path, we have found a cycle and can return true. After exploring all neighbors, we will remove the node from the current path before backtracking.
 3. We will repeat this process for all nodes in the graph to ensure that we check for cycles in all disconnected components of the graph.   
+
 Time Complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph. We will visit each node and edge at most once during the DFS.
+
 Space Complexity: O(V), where V is the number of vertices in the graph, due to the visited array, path array, and the recursive call stack for the DFS. In the worst case, if the graph is a complete directed graph, we may need to store all nodes in the call stack for the DFS.
 
 
 Second Solution: DFS with color marking
 1. Another approach to detect cycles in a directed graph is to use color marking. We can use three colors to mark the state of each node: 0 for unvisited, 1 for visiting, and 2 for done. When we start a DFS from an unvisited node, we will mark it as visiting (color 1). We will then recursively visit all its neighbors. If we encounter a neighbor that is already marked as visiting (color 1), it means we have found a cycle and can return true. After exploring all neighbors, we will mark the node as done (color 2) before backtracking.
 2. Similar to the first approach, we will repeat this process for all nodes in the graph to ensure that we check for cycles in all disconnected components of the graph.   
+
 Time Complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph. We will visit each node and edge at most once during the DFS.
+
 Space Complexity: O(V), where V is the number of vertices in the graph, due to the visited array (color array) and the recursive call stack for the DFS. In the worst case, if the graph is a complete directed graph, we may need to store all nodes in the call stack for the DFS.        
 
 
