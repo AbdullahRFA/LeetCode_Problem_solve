@@ -36,41 +36,88 @@ Space Complexity: O(V), where V is the number of vertices in the graph, due to t
 
 
 
+Solution: Kahn's Algorithm (BFS)
+1. We can also use Kahn's Algorithm, which is a breadth-first search (BFS) based algorithm, to detect cycles in a directed graph. The idea is to first calculate the in-degrees of all nodes in the graph. We will then start with all nodes that have an in-degree of zero (i.e., nodes with no dependencies) and add them to a queue. We will repeatedly remove nodes from the queue, add them to a result list, and decrease the in-degrees of their neighbors. If any neighbor's in-degree becomes zero, we will add it to the queue. This process continues until the queue is empty. If we have processed all nodes (i.e., the length of the result list is equal to the number of vertices), it means there is no cycle in the graph. If there are still nodes that have not been processed, it means there is a cycle in the graph. 
+2. We will maintain an adjacency list to represent the graph and an array to keep track of the in-degrees of each node. We will also maintain a result list to store the nodes in the order they were processed.    
+
+Time Complexity: O(V + E), where V is the number of vertices and E is the number of edges in the graph. We will visit each node and edge at most once during the BFS.
+Space Complexity: O(V), where V is the number of vertices in the graph, due to the adjacency list, in-degree array, queue, and the result list. In the worst case, if the graph is a complete directed graph, we may need to store all nodes in the queue and result list for the BFS.
+
+
 
 '''
+# Third Solution: Kahn's Algorithm (BFS)
+from collections import deque
 
-# First Solution: DFS with path tracking
 class Solution:
-    def dfs(self, curr_node, vis, adj_list, path):
-        vis[curr_node]=1
-        path[curr_node]=1
-        
-        for node in adj_list[curr_node]:
-            if vis[node]==1 and path[node]==1:
-                return True
-            if vis[node]==0:
-                if self.dfs(node, vis, adj_list, path):
-                    return True
-        path[curr_node]=0
-        return False
+    
     
     
     def isCyclic(self, V, edges):
         # code here
         
-        vis = [0 for _ in range(V)]
-        path = [0 for _ in range(V)]
-        adj_list = [[] for _ in range(V)]
-        
+        adj_list=[[] for _ in range(V)]
+       
+        indegrees = [0]*V
+       
         for u,v in edges:
-            adj_list[u].append(v)
+           adj_list[u].append(v)
+           indegrees[v]+=1
+        
+        queue=deque()
+        res = []
+        
+        for i in range(V):
+            if indegrees[i]==0:
+                queue.append(i)
+        
+        while queue:
+            curr_node = queue.popleft()
+            res.append(curr_node)
+            
+            for node in adj_list[curr_node]:
+                indegrees[node]-=1
+                if indegrees[node]==0:
+                    queue.append(node)
+        if len(res)==V:
+            return False
+        return True
+
+
+
+
+# First Solution: DFS with path tracking
+# class Solution:
+#     def dfs(self, curr_node, vis, adj_list, path):
+#         vis[curr_node]=1
+#         path[curr_node]=1
+        
+#         for node in adj_list[curr_node]:
+#             if vis[node]==1 and path[node]==1:
+#                 return True
+#             if vis[node]==0:
+#                 if self.dfs(node, vis, adj_list, path):
+#                     return True
+#         path[curr_node]=0
+#         return False
+    
+    
+#     def isCyclic(self, V, edges):
+#         # code here
+        
+#         vis = [0 for _ in range(V)]
+#         path = [0 for _ in range(V)]
+#         adj_list = [[] for _ in range(V)]
+        
+#         for u,v in edges:
+#             adj_list[u].append(v)
             
         
-        for v in range(V):
-            if vis[v]==0:
-                if self.dfs(v,vis,adj_list,path):
-                    return True
-        return False
+#         for v in range(V):
+#             if vis[v]==0:
+#                 if self.dfs(v,vis,adj_list,path):
+#                     return True
+#         return False
         
 
 
