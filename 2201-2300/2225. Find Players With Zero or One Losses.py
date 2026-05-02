@@ -40,7 +40,7 @@ Approach:
 
 Time Complexity: O(N log N), where N is the number of matches. We will need to iterate through the matches array once to build the win_loss dictionary, which takes O(N) time. Then, we will need to iterate through the win_loss dictionary to separate the players into two lists, which takes O(M) time, where M is the number of unique players. Finally, we will need to sort both lists, which takes O(K log K) time for each list, where K is the number of players in each list. In the worst case, if all players are unique and have either zero or one loss, this could take O(N log N) time.
 
-Space Complexity: O(M), where M is the number of unique players. We will need to use a dictionary to keep track of the losses for each player, which takes O(M) space.
+Space ComplexityO(M), where M is the number of unique players. We will need to use a dictionary to keep track of the losses for each player, which takes O(M) space.: 
 
 
 '''
