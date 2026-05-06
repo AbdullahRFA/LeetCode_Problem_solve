@@ -17,22 +17,27 @@ Output: 1
 Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
 
 """
-ugly_number = []
-def prime_factor():
-    for x in range(1,100000000):
-        tem=x
-        for p in [2,3,5]:
-            while x%p == 0:
-                x//=p
-        if x==1:
-            ugly_number.append(tem)
-
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        prime_factor()
-        # print(ugly_number)
-        print(len(ugly_number))
-        return ugly_number[n-1]
+        ugly_numbers = [1]*n
+        it2=it3=it5=0
+
+        for i in range(1,n):
+            next2 = ugly_numbers[it2]*2
+            next3 = ugly_numbers[it3]*3
+            next5 = ugly_numbers[it5]*5
+
+            next = min(next2,next3,next5)
+
+            ugly_numbers[i]=next
+
+            if next == next2:
+                it2+=1
+            if next == next3:
+                it3+=1
+            if next == next5:
+                it5+=1
+        return ugly_numbers[-1]
 slv = Solution()
 n = 1690
 print(slv.nthUglyNumber(n))
