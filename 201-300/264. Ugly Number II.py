@@ -17,27 +17,44 @@ Output: 1
 Explanation: 1 has no prime factors, therefore all of its prime factors are limited to 2, 3, and 5.
 
 """
+import heapq
+
+
 class Solution:
     def nthUglyNumber(self, n: int) -> int:
-        ugly_numbers = [1]*n
-        it2=it3=it5=0
+        # ugly_numbers = [1]*n
+        # it2=it3=it5=0
 
-        for i in range(1,n):
-            next2 = ugly_numbers[it2]*2
-            next3 = ugly_numbers[it3]*3
-            next5 = ugly_numbers[it5]*5
+        # for i in range(1,n):
+        #     next2 = ugly_numbers[it2]*2
+        #     next3 = ugly_numbers[it3]*3
+        #     next5 = ugly_numbers[it5]*5
 
-            next = min(next2,next3,next5)
+        #     next = min(next2,next3,next5)
 
-            ugly_numbers[i]=next
+        #     ugly_numbers[i]=next
 
-            if next == next2:
-                it2+=1
-            if next == next3:
-                it3+=1
-            if next == next5:
-                it5+=1
-        return ugly_numbers[-1]
+        #     if next == next2:
+        #         it2+=1
+        #     if next == next3:
+        #         it3+=1
+        #     if next == next5:
+        #         it5+=1
+        # return ugly_numbers[-1]
+
+        heap = [1]
+        seen = {1}
+
+        for _ in range(n):
+            curr = heapq.heappop(heap)
+            for f in (2,3,5):
+                new_val = f*curr
+                if new_val not in seen:
+                    seen.add(new_val)
+                    heapq.heappush(heap, new_val)
+        return curr
+    
+
 slv = Solution()
 n = 1690
 print(slv.nthUglyNumber(n))
